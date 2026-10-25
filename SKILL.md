@@ -42,8 +42,8 @@ batch — whichever the user asked for.
 - Already inside the issue's repository checkout: use it.
 - Anywhere else: clone it (`gh repo clone OWNER/REPO`), then work from there.
 - Check push access once per repo: `gh repo view OWNER/REPO --json viewerPermission`.
-  `WRITE` or `ADMIN` → branch on origin. `READ` (or push later denied) → fork with
-  `gh repo fork --remote` and push the fork.
+  `ADMIN`, `MAINTAIN`, or `WRITE` → branch on origin. `TRIAGE`, `READ`, or `NONE`
+  (or a push later denied) → fork with `gh repo fork --remote` and push the fork.
 
 ## Per issue, in order
 
@@ -55,7 +55,9 @@ For each issue:
 1. **Branch.** Cut `issue-N-short-slug` from the default branch — never from
    another issue's branch, never commit on the default branch.
 2. **Superpowers flow, with the issue as input.** Enter the normal flow and let
-   each skill run exactly as its own SKILL.md directs:
+   each skill run exactly as its own SKILL.md directs. The skills below are the
+   flow's gates, not an exhaustive list — where superpowers leads beyond them
+   (using-git-worktrees, executing-plans, receiving-code-review, ...), follow:
    - **brainstorming** — a dialogue with the human partner about the issue,
      before any implementation. Not a caveat for ambiguous issues: a step,
      every time. The human approves the design.
@@ -79,7 +81,11 @@ Use `--head YOUR-USERNAME:issue-N-short-slug` when PRing from a fork.
 ## Report
 
 List each issue with its PR URL. Then stop. Never merge, never rebase onto the
-default branch, never delete branches — those are human calls.
+default branch, never delete branches **on your own initiative** — those are
+human calls. If the human partner explicitly directs an integration action
+(merge, branch cleanup), carry it out at their direction through
+finishing-a-development-branch's process — this skill's deliverable is the PR,
+and unbidden it ends there.
 
 ## Rationalizations
 
