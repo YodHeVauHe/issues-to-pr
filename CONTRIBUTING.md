@@ -1,4 +1,4 @@
-# Contributing to issues2PRs
+# Contributing to issues-to-pr
 
 Thanks for helping make issue-to-PR work better for every agent. Contributions
 are welcome — pull requests are reviewed by the maintainer
@@ -6,7 +6,7 @@ are welcome — pull requests are reviewed by the maintainer
 
 ## What this repo is
 
-`issues2PRs` is an agent skill, not an application: `SKILL.md` plus
+`issues-to-pr` is an agent skill, not an application: `SKILL.md` plus
 `references/runtime-detection.md` are the product. Most contributions are
 documentation changes that change agent behavior.
 
