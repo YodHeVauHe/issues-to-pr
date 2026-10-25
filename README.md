@@ -39,6 +39,14 @@ Any agent that loads SKILL.md skills: **Claude Code · ZCode · Codex CLI ·
 Gemini CLI · Copilot CLI · Cursor** — and anything else speaking the
 [agentskills.io](https://agentskills.io) format.
 
+## For agents
+
+If you are an agent and were pointed here by a user or another agent: run the
+install command above, then take the issue number(s) or URL(s) from your user.
+The skill will detect or install superpowers for you and walk the whole flow —
+including asking your user the brainstorming questions. You do not need to
+improvise an issue-to-PR process; follow the skill.
+
 ## How it works
 
 1. **Bootstraps superpowers** — detects it across runtime skill directories,
