@@ -1,9 +1,9 @@
 ---
-name: issues2prs
+name: issues-to-pr
 description: Use when the user wants GitHub issue(s) turned into pull request(s) — fixing, implementing, or addressing an issue and opening a PR for it, whether or not the superpowers skills are installed yet. Triggers on requests like "fix issue #N and open a PR", "turn these issues into PRs", or an issue URL plus a PR request.
 ---
 
-# issues2PRs
+# issues-to-pr
 
 ## Overview
 
@@ -25,6 +25,14 @@ Merging stays a human call.
 2. **Ensure GitHub access.** Run `gh auth status`. If it fails, have your human
    partner authenticate (`gh auth login`) before continuing — issue reading,
    pushing, and PR creation all need it.
+3. **Use `push-and-commit-changes-to-github` for commits and pushes.** When
+   that skill is available, staging, committing, and pushing go through it —
+   its commit-message standard (subject, `Changes:` bullets, `Verification:`
+   block) is the standard this flow uses, so every commit says what changed
+   and how it was verified. If it is absent, hold the same standard by hand.
+   For opening the PR itself, use the `github:pr` skill when the harness has
+   it, else `gh pr create` — either way the body must explain what changed,
+   why, and how it was verified, never a bare link.
 
 ## Read the issues
 
@@ -68,15 +76,23 @@ For each issue:
      exists, not after.
    - **finishing-a-development-branch** — integration is decided by that skill's
      process with the human.
-3. **Land it.** Push the branch (origin, or your fork). Open the PR:
+3. **Land it.** Commit and push through `push-and-commit-changes-to-github`
+   when available (its commit standard applies; push the branch to origin, or
+   your fork). Open the PR through the `github:pr` skill when available,
+   otherwise `gh pr create`:
 
 ```bash
 gh pr create --title "<change summary>" --body "Closes #N
 
-<what changed and why, per the approved design>"
+<what changed and why, per the approved design, and how it was verified>"
 ```
 
-Use `--head YOUR-USERNAME:issue-N-short-slug` when PRing from a fork.
+Use `--head YOUR-USERNAME:issue-N-short-slug` when PRing from a fork. The PR
+body always names what changed, why (per the approved design), and how it was
+verified — a reviewer should not have to open the diff to learn the intent.
+Then comment on the issue with a short note of what was done and a link to
+the PR, so the thread shows what is happening even for people who only watch
+issues.
 
 ## Report
 
